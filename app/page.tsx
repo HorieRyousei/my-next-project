@@ -1,6 +1,7 @@
 import styles from "./page.module.css";
 import Image from "next/image";
 
+import ButtonLink from "@/app/_components/ButtonLink";
 type News = {
   id: string;
   title: string;
@@ -49,12 +50,12 @@ const data: {
 };
 
 export default function Home() {
-  const name = "世界";
+  const sliceData = data.contents.slice(0,2);
   return (
     <>
     <section className={styles.top}>
      <div>
-       <h1 className={styles.title}>テクノロジーの力で{name}を変える</h1>
+       <h1 className={styles.title}>テクノロジーの力で世界を変える</h1>
        <p className={styles.description}>私たちは市場をリードしているグローバルテックカンパニーです</p>
      </div>
      <Image
@@ -65,15 +66,18 @@ export default function Home() {
       height={1200}
       />
       </section>
-      <section className={styles.nems}>
+      <section className={styles.news}>
         <h2 className={styles.newsTitle}>News</h2>
         <ul>
-          {data. contents. map ( (article) => (
+        <div className={styles.newsLink}>
+          <ButtonLink href="/news">もっとる</ButtonLink>
+        </div>
+          {sliceData.map ( (article) => (
             <li key={article.id} className={styles.list}>
                 <div className={styles.link}>
                   <Image
                     className={styles.image}
-                    src="/no-umage.png"
+                    src="/no-image.png"
                     alt="No Image"
                     width={1200}
                     height={630}
